@@ -8,4 +8,6 @@ object CsvEncoder {
 
   // Lifts function into CsvEncoder, i.e. creates a CsvEncoder
   def pure[A](f: A => Seq[String]): CsvEncoder[A] = (a: A) => f(a)
+
+  def printCsv[A](a: A)(implicit enc: CsvEncoder[A]) = println(enc.encode(a))
 }

@@ -1,15 +1,15 @@
 package shapeless.examples.chapter2
 
-import shapeless.examples.{Cat, Dog, _}
+import shapeless.examples._
 
 object AlgebraicDataTypes extends App {
 
   // Compiler knows whether or not our match is complete, i.e. covers all possible types
-  def speak(animal: Animal): String = animal match {
-    case Dog() => "woof"
-    case Cat() => "meow"
+  def price(security: Security): Double = security match {
+    case Bond(_, maturity, faceValue, rate) => faceValue / Math.pow(1 + rate, maturity)
+    case Equity(_, price) => price
   }
 
-  println(speak(Dog()))
-  println(speak(Cat()))
+  println(price(bond))
+  println(price(equity))
 }

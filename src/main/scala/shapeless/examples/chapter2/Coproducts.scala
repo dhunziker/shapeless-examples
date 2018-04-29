@@ -5,13 +5,13 @@ import shapeless.{:+:, CNil, Generic, Inl, Inr}
 
 object Coproducts extends App {
 
-  // Generic representation of an animal
-  type Animal2 = Dog :+: Cat :+: CNil
-  val dog: Animal2 = Inl(Dog())
-  val cat: Animal2 = Inr(Inl(Cat()))
+  // Generic representation of a security
+  type Security2 = Bond :+: Equity :+: CNil
+  val bond2: Security2 = Inl(bond)
+  val equity2: Security2 = Inr(Inl(equity))
 
   // Using shapeless to generate generic representation for concrete instances
-  val animalGen = Generic[Animal]
-  println(animalGen.to(Dog()))
-  println(animalGen.to(Cat()))
+  val securityGen = Generic[Security]
+  println(securityGen.to(bond))
+  println(securityGen.to(equity))
 }
